@@ -37,6 +37,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -139,7 +140,7 @@ fun ImageCard(myImageUrl:String, title: String, modifier: Modifier = Modifier,se
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(navController: NavController){
-    var textFieldState by rememberSaveable{ mutableStateOf("") }
+    var textFieldState by remember{ mutableStateOf("") }
     val scope = rememberCoroutineScope()
     val snackBarHostState = remember { SnackbarHostState() }
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -172,7 +173,9 @@ fun MainScreen(navController: NavController){
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(17.dp)
+                    .padding(17.dp),
+                shape = RoundedCornerShape(20.dp)
+
             )
             Box (
                 modifier= Modifier
