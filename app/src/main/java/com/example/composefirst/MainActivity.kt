@@ -20,6 +20,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -56,6 +58,8 @@ import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -82,11 +86,12 @@ class MainActivity : ComponentActivity() {
             val scope = rememberCoroutineScope()
             val snackBarHostState = remember {SnackbarHostState()}
             val keyboardController = LocalSoftwareKeyboardController.current
+            val scrollState = rememberScrollState()
             Scaffold (
                 snackbarHost = { SnackbarHost(hostState = snackBarHostState)},
                 modifier = Modifier.fillMaxSize()
             ){
-                Column(Modifier.verticalScroll(rememberScrollState())) {
+                Column {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -141,6 +146,27 @@ class MainActivity : ComponentActivity() {
                             Text(text = "click her nigger")
                         }
                     }
+                    LazyColumn(){
+                        val myList = mutableListOf<Int>()
+                        for (i in 1..50){
+                            myList.add(i)
+                        }
+                        itemsIndexed(myList){ index,item ->
+
+                            Text(
+                                text = "item $item",
+                                textAlign = TextAlign.Center,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 15.sp,
+                                modifier = Modifier
+                                    .padding(10.dp)
+                                    .fillMaxWidth()
+                            )
+
+
+                        }
+
+                    }
 
 
 
@@ -152,8 +178,6 @@ class MainActivity : ComponentActivity() {
 
         }
     }
-
-
 
 
 
