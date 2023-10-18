@@ -28,9 +28,11 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -45,6 +47,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.composefirst.R
@@ -134,13 +137,13 @@ fun ImageCard(myImageUrl:String, title: String, modifier: Modifier = Modifier,se
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(){
-    val textFieldState = remember{ mutableStateOf("") }
+fun MainScreen(navController: NavController){
+    var textFieldState by remember{ mutableStateOf("") }
     val scope = rememberCoroutineScope()
     val snackBarHostState = remember { SnackbarHostState() }
     val keyboardController = LocalSoftwareKeyboardController.current
     val context = LocalContext.current
-
+    var textvalue = ""
     Scaffold (
         snackbarHost = { SnackbarHost(hostState = snackBarHostState) },
         modifier = Modifier.fillMaxSize()
@@ -160,10 +163,9 @@ fun MainScreen(){
                     secondImg = values.nigger
                 )
             }
-
             OutlinedTextField(
-                value = textFieldState.value,
-                onValueChange = {textFieldState.value = it},
+                value = textFieldState,
+                onValueChange = {textFieldState = it },
                 label = {
                     Text(text = "write here")
                 },
@@ -215,16 +217,8 @@ fun MainScreen(){
                             .padding(10.dp)
                             .fillMaxWidth()
                     )
-
-
                 }
-
             }
-
-
-
-
-
         }
         Box (
             modifier= Modifier
@@ -232,11 +226,29 @@ fun MainScreen(){
             contentAlignment = Alignment.BottomCenter
         ) {
             Button(onClick = {
-
+                navController.navigate(Screens.SecoundScreen.withArgs(textFieldState))
             }){
                 Text(text = "click her nigger")
             }
         }
+    }
+}
+
+
+
+@Composable
+fun SecoundScreen(title:String?){
+    Box(modifier = Modifier
+        .fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ){
+        Text(text = "hello $title",
+            fontWeight = FontWeight.Bold,
+            fontSize = 20.sp
+        )
 
     }
+
+
+
 }

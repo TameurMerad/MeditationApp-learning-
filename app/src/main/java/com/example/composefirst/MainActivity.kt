@@ -69,6 +69,8 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.composefirst.ui.theme.ComposeFirstTheme
 import com.example.composefirst.ui.theme.MainScreen
+import com.example.composefirst.ui.theme.SecoundScreen
+import com.example.composefirst.ui.theme.navigation
 import com.example.composefirst.ui.theme.values
 import kotlinx.coroutines.launch
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
@@ -82,7 +84,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MainScreen()
+            navigation()
         }
     }
 
