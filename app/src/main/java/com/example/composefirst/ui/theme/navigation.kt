@@ -15,7 +15,7 @@ fun navigation() {
                MainScreen(navController = navController)
            }
             composable(
-                route = Screens.SecoundScreen.route + "?title={title}",
+                route = Screens.SecoundScreen.route + "/{title}",
                 arguments = listOf(navArgument("title"){
                         type = NavType.StringType
                     defaultValue = "soufyan"
