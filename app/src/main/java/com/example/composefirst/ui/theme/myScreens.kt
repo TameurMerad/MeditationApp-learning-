@@ -241,7 +241,9 @@ fun MainScreen(navController: NavController){
 @Composable
 fun SecoundScreen(title:String?){
     Box(modifier = Modifier
-        .fillMaxSize(),
+        .fillMaxSize()
+        .background(Color.Magenta)
+        ,
         contentAlignment = Alignment.Center
     ){
         Text(text = "hello $title",
