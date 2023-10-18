@@ -32,6 +32,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -138,7 +139,7 @@ fun ImageCard(myImageUrl:String, title: String, modifier: Modifier = Modifier,se
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(navController: NavController){
-    var textFieldState by remember{ mutableStateOf("") }
+    var textFieldState by rememberSaveable{ mutableStateOf("") }
     val scope = rememberCoroutineScope()
     val snackBarHostState = remember { SnackbarHostState() }
     val keyboardController = LocalSoftwareKeyboardController.current
