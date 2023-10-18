@@ -68,6 +68,7 @@ import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.composefirst.ui.theme.ComposeFirstTheme
+import com.example.composefirst.ui.theme.MainScreen
 import com.example.composefirst.ui.theme.values
 import kotlinx.coroutines.launch
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
@@ -81,182 +82,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val textFieldState = remember{ mutableStateOf("") }
-            val scaffoldStat = rememberScrollState()
-            val scope = rememberCoroutineScope()
-            val snackBarHostState = remember {SnackbarHostState()}
-            val keyboardController = LocalSoftwareKeyboardController.current
-            val scrollState = rememberScrollState()
-            Scaffold (
-                snackbarHost = { SnackbarHost(hostState = snackBarHostState)},
-                modifier = Modifier.fillMaxSize()
-            ){
-                Column {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(12.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        val context = LocalContext.current
-                        ImageCard(myImageUrl = values.painter, title = values.title, modifier = Modifier
-                            .weight(1f)
-                            .padding(8.dp),
-                            secondImg = values.nigger
-                        )
-                    }
-
-                    OutlinedTextField(
-                        value = textFieldState.value,
-                        onValueChange = {textFieldState.value = it},
-                        label = {
-                            Text(text = "write here")
-                        },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(17.dp)
-                    )
-                    Box (
-
-                        modifier= Modifier
-                            .fillMaxWidth(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Button(onClick = {
-                            keyboardController?.hide()
-//                            Toast.makeText(applicationContext,"hello nigger ${textFieldState.value}",Toast.LENGTH_SHORT).show()
-                            scope.launch {
-                                val result = snackBarHostState.showSnackbar(
-                                    "yasseur no9ch",
-                                    withDismissAction = true,
-                                    actionLabel = "retry",
-                                    duration = SnackbarDuration.Indefinite
-                                    )
-                                when(result){
-                                    SnackbarResult.Dismissed ->{
-                                        Toast.makeText(applicationContext,"action dismissed",Toast.LENGTH_SHORT).show()
-                                    }
-                                    SnackbarResult.ActionPerformed ->{
-                                        Toast.makeText(applicationContext,"action Performed",Toast.LENGTH_SHORT).show()
-                                    }
-                                }
-                            }
-
-                        }){
-                            Text(text = "click her nigger")
-                        }
-                    }
-                    LazyColumn(){
-                        val myList = mutableListOf<Int>()
-                        for (i in 1..50){
-                            myList.add(i)
-                        }
-                        itemsIndexed(myList){ index,item ->
-
-                            Text(
-                                text = "item $item",
-                                textAlign = TextAlign.Center,
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 15.sp,
-                                modifier = Modifier
-                                    .padding(10.dp)
-                                    .fillMaxWidth()
-                            )
-
-
-                        }
-
-                    }
-
-
-
-
-
-                }
-
-            }
-
+            MainScreen()
         }
     }
 
 
 
 
-    @SuppressLint("UnrememberedMutableState")
-    @Composable
-    fun ImageCard(myImageUrl:String, title: String, modifier: Modifier = Modifier,secondImg:String) {
-        val imageUrlT3i = mutableStateOf(myImageUrl)
-        Card(
-            modifier = modifier.fillMaxWidth()
-            ,
-            shape = RoundedCornerShape(20.dp),
-            elevation = CardDefaults.cardElevation(defaultElevation = 15.dp)
-
-        )
-        {
-            Box(modifier = Modifier.height(200.dp))
-            {
-//            here is the image
-                AsyncImage(
-                    contentDescription = "null",
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(Color.Transparent)
-                        .clickable {
-                            try {
-                                if (imageUrlT3i.value == secondImg) {
-                                    imageUrlT3i.value = myImageUrl
-                                } else imageUrlT3i.value = secondImg
-                                Toast
-                                    .makeText(applicationContext, "clicked", Toast.LENGTH_SHORT)
-                                    .show()
-                            } catch (e: Exception) {
-                                Toast
-                                    .makeText(applicationContext, e.message, Toast.LENGTH_SHORT)
-                                    .show()
-                            }
-                        },
-                    model = ImageRequest.Builder(LocalContext.current.applicationContext)
-                        .data(imageUrlT3i.value)
-                        .crossfade(true)
-                        .build(),
-                    placeholder = painterResource(R.drawable.nigga_man),
-                    contentScale = ContentScale.Crop
-                )
-
-
-//            here is the gradient
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(
-                            Brush.verticalGradient(
-                                colors = listOf(
-                                    Color.Transparent,
-                                    Color.Black
-                                ), startY = 400f
-                            )
-                        )
-                )
-
-//             here is the text
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(12.dp), contentAlignment = Alignment.BottomStart
-                )
-                {
-                    Text(
-                        text = title,
-                        style = androidx.compose.ui.text.TextStyle(
-                            color = Color.White,
-                            fontSize = 16.sp
-                        )
-                    )
-                }
-            }
-        }
-    }
 
 
 }
