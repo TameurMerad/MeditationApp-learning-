@@ -226,7 +226,9 @@ fun MainScreen(navController: NavController){
             contentAlignment = Alignment.BottomCenter
         ) {
             Button(onClick = {
-                navController.navigate(Screens.SecoundScreen.withArgs(textFieldState))
+                navController.navigate(Screens.SecoundScreen.withArgs(
+                    if (textFieldState.isEmpty() || textFieldState == null) "soufyan" else textFieldState
+                ))
             }){
                 Text(text = "click her nigger")
             }
