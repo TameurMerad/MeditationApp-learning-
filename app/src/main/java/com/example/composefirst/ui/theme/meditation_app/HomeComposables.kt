@@ -129,11 +129,10 @@ fun Thoughts (){
 
     Box(modifier = Modifier
         .fillMaxWidth()
-        .padding(15.dp)
+        .padding( 15.dp)
         .clip(RoundedCornerShape(20.dp))
         .background(LightRed)
-        .padding(15.dp)
-    ){
+        .padding(start =  15.dp, end = 15.dp , top = 25.dp, bottom =25.dp)    ){
         Row (modifier = Modifier
             .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
@@ -141,8 +140,20 @@ fun Thoughts (){
         ) {
 
             Column {
-                Text(text = "Daily Thoughts")
-                Text(text = "Meditation * 3-10 min")
+                Text(
+                    text = "Daily Thoughts",
+                    color = TextWhite,
+                    fontFamily = gothicA1,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp
+                    )
+                Text(
+                    text = "Meditation * 3-10 min",
+                    color = TextWhite,
+                    fontFamily = gothicA1,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 15.sp
+                )
             }
 
             Box(
