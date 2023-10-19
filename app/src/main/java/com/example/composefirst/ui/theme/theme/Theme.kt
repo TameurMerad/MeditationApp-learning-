@@ -1,4 +1,4 @@
-package com.example.composefirst.ui.theme
+package com.example.composefirst.ui.theme.theme
 
 import android.app.Activity
 import android.os.Build
@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.plcoding.meditationuiyoutube.ui.theme.Typography
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
