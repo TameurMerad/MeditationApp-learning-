@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -133,8 +134,31 @@ fun Thoughts (){
         .background(LightRed)
         .padding(15.dp)
     ){
-        Row {
+        Row (modifier = Modifier
+            .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
 
+            Column {
+                Text(text = "Daily Thoughts")
+                Text(text = "Meditation * 3-10 min")
+            }
+
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+
+                .size(40.dp)
+                .clip(CircleShape)
+                .background(ButtonBlue)
+                .padding(5.dp)
+            ){
+                Icon(painter = painterResource(R.drawable.ic_play), contentDescription ="play icon",
+                    tint = Color.White,
+                    modifier = Modifier.size(16.dp)
+                    )
+            }
 
 
         }

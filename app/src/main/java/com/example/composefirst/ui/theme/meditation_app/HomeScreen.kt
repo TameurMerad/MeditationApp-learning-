@@ -25,6 +25,7 @@ fun HomeScreen(){
     ){
             Greetings(name = "Soufyan")
             ChipsSection(myList = mutableListOf("Soufyan","yassuer","kach wahd","Soufyan","yassuer","kach wahd"))
+            Thoughts()
 
     }
 }
