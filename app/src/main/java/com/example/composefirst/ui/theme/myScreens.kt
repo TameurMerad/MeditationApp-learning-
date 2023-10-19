@@ -40,6 +40,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -95,7 +96,7 @@ fun ImageCard(myImageUrl:String, title: String, modifier: Modifier = Modifier,se
                     .data(imageUrlT3i.value)
                     .crossfade(true)
                     .build(),
-                placeholder = painterResource(R.drawable.nigga_man),
+                placeholder = painterResource(R.drawable.img),
                 contentScale = ContentScale.Crop
             )
 

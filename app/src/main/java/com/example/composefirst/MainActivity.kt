@@ -68,6 +68,7 @@ import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.composefirst.ui.theme.ComposeFirstTheme
+import com.example.composefirst.ui.theme.ImageCard
 import com.example.composefirst.ui.theme.MainScreen
 import com.example.composefirst.ui.theme.SecoundScreen
 import com.example.composefirst.ui.theme.navigation
@@ -84,10 +85,35 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            navigation()
+
+            zell()
+
         }
     }
+@Composable
+fun zell (){
 
+    Column(
+
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(10.dp)
+            .verticalScroll(rememberScrollState())
+
+    ){
+
+        ImageCard(myImageUrl = values.nigger, title ="zella ta3i" , secondImg =values.nigger ,
+            modifier = Modifier.padding(bottom = 10.dp))
+        ImageCard(myImageUrl = values.nigger, title ="zella ta3i" , secondImg =values.nigger,
+            modifier = Modifier.padding(bottom = 10.dp) )
+        ImageCard(myImageUrl = values.nigger, title ="zella ta3i" , secondImg =values.nigger,
+            modifier = Modifier.padding(bottom = 10.dp) )
+        ImageCard(myImageUrl = values.nigger, title ="zella ta3i" , secondImg =values.nigger,
+            modifier = Modifier.padding(bottom = 10.dp) )
+        ImageCard(myImageUrl = values.nigger, title ="zella ta3i" , secondImg =values.nigger )
+
+    }
+}
 
 
 
