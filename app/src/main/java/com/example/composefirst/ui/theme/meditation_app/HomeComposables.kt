@@ -336,10 +336,20 @@ fun CardScroll(){
         Row (horizontalArrangement = Arrangement.SpaceBetween){
 
             Box(modifier = Modifier.weight(0.5f)){
-                SomethingCard(title = "yacine no9ch ya3ti", icon = painterResource(R.drawable.ic_headphone) , BgColor = BlueViolet1)
+                SomethingCard(title = "Listen to Music", icon = painterResource(R.drawable.ic_headphone) , BgColor = BlueViolet1)
             }
             Box(modifier = Modifier.weight(0.5f)){
-                SomethingCard(title = "yacine no9ch ya3ti", icon = painterResource(R.drawable.ic_headphone) , BgColor = LightGreen1)
+                SomethingCard(title = "Watch Great Videos", icon = painterResource(R.drawable.ic_videocam) , BgColor = LightGreen1)
+            }
+
+        }
+        Row (horizontalArrangement = Arrangement.SpaceBetween){
+
+            Box(modifier = Modifier.weight(0.5f)){
+                SomethingCard(title = "Calming Music", icon = painterResource(R.drawable.ic_music) , BgColor = Beige1)
+            }
+            Box(modifier = Modifier.weight(0.5f)){
+                SomethingCard(title = "Night Island", icon = painterResource(R.drawable.ic_moon) , BgColor = OrangeYellow1)
             }
 
         }
