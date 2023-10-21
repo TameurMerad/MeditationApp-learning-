@@ -94,7 +94,12 @@ fun Greetings ( name:String){
             painter = painterResource(R.drawable.ic_search),
             contentDescription = "search",
             tint = Color.White,
-            modifier = Modifier.size(25.dp)
+            modifier = Modifier
+                .clickable {
+
+                }
+                .size(25.dp)
+
         )
     }
 }
@@ -179,12 +184,18 @@ fun Thoughts (){
 
                     .size(40.dp)
                     .clip(CircleShape)
+                    .clickable {
+
+                    }
                     .background(ButtonBlue)
                     .padding(5.dp)
+
             ){
                 Icon(painter = painterResource(R.drawable.ic_play), contentDescription ="play icon",
                     tint = Color.White,
-                    modifier = Modifier.size(16.dp)
+                    modifier = Modifier
+                        .size(16.dp)
+
                     )
             }
 
@@ -294,7 +305,6 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
 
                     Box(
                         modifier = Modifier
-
                             .clip(RoundedCornerShape(20.dp))
                             .clickable {
 
