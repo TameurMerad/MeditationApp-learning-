@@ -252,14 +252,15 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
                 modifier = Modifier
                     .fillMaxSize()
                     .background(BgColor)
-                    .padding(12.dp), contentAlignment = Alignment.TopStart
+                    .padding(22.dp)
+                    , contentAlignment = Alignment.TopStart
             )
             {
                 Text(
                     text = title,
                     style = androidx.compose.ui.text.TextStyle(
                         color = Color.White,
-                        fontWeight = FontWeight.Bold,
+                        fontWeight = FontWeight.Normal,
                         fontSize = 20.sp
                     )
                 )
