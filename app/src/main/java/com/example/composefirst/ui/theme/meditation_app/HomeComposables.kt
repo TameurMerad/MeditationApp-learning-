@@ -294,13 +294,15 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
 
                     Box(
                         modifier = Modifier
+
                             .clip(RoundedCornerShape(20.dp))
-                            .weight(0.5f)
-                            .background(ButtonBlue)
-                            .padding(15.dp)
                             .clickable {
 
                             }
+                            .weight(0.5f)
+                            .background(ButtonBlue)
+                            .padding(15.dp)
+
                         ,
                         contentAlignment = Alignment.Center,
                     ){
