@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
@@ -276,9 +277,20 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
                     modifier = Modifier.padding(15.dp)
                 ) {
 
-                    Icon(painter = icon, contentDescription = "myIcon",
-                        modifier = Modifier.size(24.dp).weight(0.5f)
-                    )
+
+                    Box (contentAlignment = Alignment.BottomCenter,
+                        modifier = Modifier.weight(0.5f).padding(top = 10.dp)
+                        ){
+                        Icon(painter = icon, contentDescription = "myIcon",
+                            modifier = Modifier
+                                .size(24.dp),
+                            tint = Color.White
+
+                        )
+                    }
+
+
+
                     Box(
                         modifier = Modifier
                             .clip(RoundedCornerShape(20.dp))
