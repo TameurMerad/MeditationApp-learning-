@@ -13,7 +13,6 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun HomeScreen(){
-
     val systemUiController = rememberSystemUiController()
     systemUiController.setStatusBarColor(DeepBlue)
     Column (
@@ -26,6 +25,9 @@ fun HomeScreen(){
             Greetings(name = "Soufyan")
             ChipsSection(myList = mutableListOf("Soufyan","yassuer","kach wahd","Soufyan","yassuer","kach wahd"))
             Thoughts()
+            MySpacer(num = 0.01f)
+            BigText(text = "Featured")
+            CardScroll()
 
     }
 }

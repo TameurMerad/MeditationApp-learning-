@@ -1,19 +1,29 @@
 package com.example.composefirst.ui.theme.meditation_app
 
+import android.annotation.SuppressLint
 import android.view.View
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,7 +35,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
@@ -35,10 +49,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowCompat
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.example.composefirst.R
+import com.example.composefirst.ui.theme.theme.Beige1
+import com.example.composefirst.ui.theme.theme.BlueViolet1
 import com.example.composefirst.ui.theme.theme.ButtonBlue
 import com.example.composefirst.ui.theme.theme.DarkerButtonBlue
+import com.example.composefirst.ui.theme.theme.LightGreen1
 import com.example.composefirst.ui.theme.theme.LightRed
+import com.example.composefirst.ui.theme.theme.OrangeYellow1
 import com.example.composefirst.ui.theme.theme.TextWhite
 import com.plcoding.meditationuiyoutube.ui.theme.gothicA1
 import java.time.format.TextStyle
@@ -80,11 +100,8 @@ fun Greetings ( name:String){
 
 
 
-
 @Composable
-fun ChipsSection(
-    myList: MutableList<String>
-){
+fun ChipsSection(myList: MutableList<String>){
     var selectedChip by remember{ mutableStateOf(0) }
     LazyRow(){
         itemsIndexed(myList){index, item ->
@@ -128,10 +145,10 @@ fun Thoughts (){
 
     Box(modifier = Modifier
         .fillMaxWidth()
-        .padding( 15.dp)
+        .padding(15.dp)
         .clip(RoundedCornerShape(20.dp))
         .background(LightRed)
-        .padding(start =  15.dp, end = 15.dp , top = 25.dp, bottom =25.dp)    ){
+        .padding(start = 15.dp, end = 15.dp, top = 25.dp, bottom = 25.dp)    ){
         Row (modifier = Modifier
             .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
@@ -159,10 +176,10 @@ fun Thoughts (){
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
 
-                .size(40.dp)
-                .clip(CircleShape)
-                .background(ButtonBlue)
-                .padding(5.dp)
+                    .size(40.dp)
+                    .clip(CircleShape)
+                    .background(ButtonBlue)
+                    .padding(5.dp)
             ){
                 Icon(painter = painterResource(R.drawable.ic_play), contentDescription ="play icon",
                     tint = Color.White,
@@ -181,4 +198,140 @@ fun Thoughts (){
 
 
 }
+
+@Composable
+fun MySpacer(num: Float){
+    Spacer(modifier = Modifier
+        .fillMaxWidth()
+        .fillMaxHeight(num))
+}
+
+
+@Composable
+fun BigText (text:String){
+    Text(text = text,
+        color = TextWhite,
+        fontFamily = gothicA1,
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = 30.sp,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(20.dp),
+        textAlign = TextAlign.Start
+        )
+
+}
+
+
+
+@SuppressLint("UnrememberedMutableState")
+@Composable
+fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
+    Card(
+        modifier = Modifier
+            .padding(8.dp)
+            ,
+        shape = RoundedCornerShape(20.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 15.dp)
+
+    )
+    {
+        Box(modifier = Modifier.height(200.dp))
+        {
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ){
+
+                Row (horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier.padding(15.dp)
+                ) {
+
+                    Icon(painter = icon, contentDescription = "myIcon",
+                        modifier = Modifier.size(24.dp)
+                        )
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(15.dp))
+                            .clickable {
+
+                            }
+                            .background(ButtonBlue)
+                            .padding(15.dp)
+                        ,
+                        contentAlignment = Alignment.Center,
+
+                        ){
+                        Text(
+                            text = "Start",
+                            color = TextWhite,
+                            fontFamily = gothicA1,
+                            fontWeight = FontWeight.Normal,
+                            fontSize = 15.sp
+                        )
+
+
+                    }
+
+
+
+                }
+
+
+
+            }
+
+//             here is the text
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(BgColor)
+                    .padding(12.dp), contentAlignment = Alignment.TopStart
+            )
+            {
+                Text(
+                    text = title,
+                    style = androidx.compose.ui.text.TextStyle(
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp
+                    )
+                )
+            }
+        }
+    }
+}
+
+
+
+@Composable
+fun CardScroll(){
+    var verticalScrollState = rememberScrollState()
+    Column (
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(verticalScrollState)
+            .padding(10.dp)
+    ){
+        Row (horizontalArrangement = Arrangement.SpaceBetween){
+
+            Box(modifier = Modifier.weight(0.5f)){
+                SomethingCard(title = "yacine no9ch ya3ti", icon = painterResource(R.drawable.ic_headphone) , BgColor = BlueViolet1)
+            }
+            Box(modifier = Modifier.weight(0.5f)){
+                SomethingCard(title = "yacine no9ch ya3ti", icon = painterResource(R.drawable.ic_headphone) , BgColor = LightGreen1)
+            }
+
+        }
+
+
+    }
+
+
+
+}
+
+
 

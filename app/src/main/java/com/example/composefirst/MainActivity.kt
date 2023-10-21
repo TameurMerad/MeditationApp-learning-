@@ -20,6 +20,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import com.example.composefirst.ui.theme.ImageCard
+import com.example.composefirst.ui.theme.MainScreen
+import com.example.composefirst.ui.theme.meditation_app.CardScroll
 import com.example.composefirst.ui.theme.meditation_app.Greetings
 import com.example.composefirst.ui.theme.meditation_app.HomeScreen
 import com.example.composefirst.ui.theme.values
@@ -32,10 +34,22 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
-         HomeScreen()
+            CardScroll()
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 @Composable
 fun zell (){
 
