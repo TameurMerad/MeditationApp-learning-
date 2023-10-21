@@ -231,9 +231,9 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
     Card(
         modifier = Modifier
             .padding(8.dp)
-            .clickable {
-
-            }
+//            .clickable {
+//
+//            }
             ,
         shape = RoundedCornerShape(20.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 15.dp)
@@ -298,6 +298,9 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
                             .weight(0.5f)
                             .background(ButtonBlue)
                             .padding(15.dp)
+                            .clickable {
+
+                            }
                         ,
                         contentAlignment = Alignment.Center,
                     ){
