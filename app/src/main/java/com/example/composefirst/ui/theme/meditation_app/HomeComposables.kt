@@ -230,58 +230,21 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
     Card(
         modifier = Modifier
             .padding(8.dp)
+            .clickable {
+
+            }
             ,
         shape = RoundedCornerShape(20.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 15.dp)
 
     )
     {
+
+
         Box(modifier = Modifier.height(200.dp))
         {
 
-            Box(
-                modifier = Modifier
-                    .fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ){
 
-                Row (horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier.padding(15.dp)
-                ) {
-
-                    Icon(painter = icon, contentDescription = "myIcon",
-                        modifier = Modifier.size(24.dp)
-                        )
-                    Box(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(15.dp))
-                            .clickable {
-
-                            }
-                            .background(ButtonBlue)
-                            .padding(15.dp)
-                        ,
-                        contentAlignment = Alignment.Center,
-
-                        ){
-                        Text(
-                            text = "Start",
-                            color = TextWhite,
-                            fontFamily = gothicA1,
-                            fontWeight = FontWeight.Normal,
-                            fontSize = 15.sp
-                        )
-
-
-                    }
-
-
-
-                }
-
-
-
-            }
 
 //             here is the text
             Box(
@@ -299,6 +262,49 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
                         fontSize = 20.sp
                     )
                 )
+            }
+
+
+//            here is the button and the icon
+            Box(
+                modifier = Modifier
+                    .fillMaxSize(),
+                contentAlignment = Alignment.BottomCenter
+            ){
+
+                Row (horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier.padding(15.dp)
+                ) {
+
+                    Icon(painter = icon, contentDescription = "myIcon",
+                        modifier = Modifier.size(24.dp).weight(0.5f)
+                    )
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(20.dp))
+                            .weight(0.5f)
+                            .background(ButtonBlue)
+                            .padding(15.dp)
+                        ,
+                        contentAlignment = Alignment.Center,
+                    ){
+                        Text(
+                            text = "Start",
+                            color = TextWhite,
+                            fontFamily = gothicA1,
+                            fontWeight = FontWeight.Normal,
+                            fontSize = 15.sp
+                        )
+
+
+                    }
+
+
+
+                }
+
+
+
             }
         }
     }
