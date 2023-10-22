@@ -280,17 +280,15 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
 
 
 //            here is the button and the icon
-            Box(
-                modifier = Modifier
-                    .fillMaxSize(),
-                contentAlignment = Alignment.BottomCenter
-            ) {
 
+
+//            icon
 
                 Box(
-                    contentAlignment = Alignment.BottomStart,
                     modifier = Modifier
-                        .padding(top = 15.dp)
+                        .fillMaxSize()
+                        .padding(15.dp),
+                    contentAlignment = Alignment.BottomStart
 
                 ) {
                     Icon(
@@ -298,15 +296,17 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
                         modifier = Modifier
                             .size(24.dp),
                         tint = Color.White,
-
                         )
                 }
 
-                Box(
-                    contentAlignment = Alignment.BottomEnd,
-                    modifier = Modifier
-                        .padding(top = 15.dp)
 
+//            Button
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(15.dp),
+                    contentAlignment = Alignment.BottomEnd
                 ) {
 
                     Box(
@@ -332,7 +332,6 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
                 }
 
 
-            }
         }
     }
 }
