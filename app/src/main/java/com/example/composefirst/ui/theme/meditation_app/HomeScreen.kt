@@ -21,7 +21,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 @Composable
 fun HomeScreen(){
     val systemUiController = rememberSystemUiController()
-    val chipList = mutableListOf("Soufyan","yassuer","kach wahd","Soufyan","yassuer","kach wahd")
+    val chipList = mutableListOf("Soufyan","yassuer","yacine","Soufyan","yassuer","kach wahd")
     systemUiController.setStatusBarColor(DeepBlue)
     val btmList = listOf<BtmNavData>(
         BtmNavData(painterResource(R.drawable.ic_home),"Home" ),
@@ -59,7 +59,6 @@ fun HomeScreen(){
                 )
             )
     )
-
     Box(modifier = Modifier
         .fillMaxSize(),
         contentAlignment = Alignment.BottomCenter
