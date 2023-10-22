@@ -75,7 +75,13 @@ fun zell (){
     }
 }
 
-
+//    @Preview
+//    @Composable
+//    fun SimpleComposablePreview() {
+//        HomeScreen()
+//    }
+//
+//
 
 }
 

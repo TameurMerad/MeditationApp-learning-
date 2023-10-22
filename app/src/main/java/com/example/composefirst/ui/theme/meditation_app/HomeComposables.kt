@@ -248,7 +248,7 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
 //            .clickable {
 //
 //            }
-            ,
+        ,
         shape = RoundedCornerShape(20.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 15.dp)
 
@@ -260,14 +260,12 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
         {
 
 
-
 //             here is the text
             Box(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(BgColor)
-                    .padding(22.dp)
-                    , contentAlignment = Alignment.TopStart
+                    .padding(22.dp), contentAlignment = Alignment.TopStart
             )
             {
                 Text(
@@ -286,58 +284,54 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
                 modifier = Modifier
                     .fillMaxSize(),
                 contentAlignment = Alignment.BottomCenter
-            ){
+            ) {
 
-                Row (horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier.padding(15.dp)
+
+                Box(
+                    contentAlignment = Alignment.BottomStart,
+                    modifier = Modifier
+                        .padding(top = 15.dp)
+
                 ) {
-
-
-                    Box (contentAlignment = Alignment.BottomCenter,
+                    Icon(
+                        painter = icon, contentDescription = "myIcon",
                         modifier = Modifier
-                            .weight(0.5f)
-                            .padding(top = 10.dp)
-                        ){
-                        Icon(painter = icon, contentDescription = "myIcon",
-                            modifier = Modifier
-                                .size(24.dp),
-                            tint = Color.White
+                            .size(24.dp),
+                        tint = Color.White,
 
                         )
-                    }
+                }
 
+                Box(
+                    contentAlignment = Alignment.BottomEnd,
+                    modifier = Modifier
+                        .padding(top = 15.dp)
 
+                ) {
 
                     Box(
                         modifier = Modifier
-                            .clip(RoundedCornerShape(20.dp))
+                            .clip(RoundedCornerShape(25.dp))
                             .clickable {
-
                             }
-                            .weight(0.5f)
-                            .background(ButtonBlue)
-                            .padding(15.dp)
 
-                        ,
+                            .background(ButtonBlue)
+                            .padding(8.dp),
                         contentAlignment = Alignment.Center,
-                    ){
+                    ) {
                         Text(
                             text = "Start",
                             color = TextWhite,
                             fontFamily = gothicA1,
                             fontWeight = FontWeight.Normal,
-                            fontSize = 15.sp
+                            fontSize = 12.sp
                         )
 
 
                     }
-
-
-
                 }
 
 
-
             }
         }
     }
@@ -345,34 +339,53 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
 
 
 
-@Composable
-fun CardScroll(){
-    var verticalScrollState = rememberScrollState()
-    Column (
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(verticalScrollState)
-            .padding(10.dp)
-            .padding(bottom = 100.dp)
-    ){
-        Row (horizontalArrangement = Arrangement.SpaceBetween){
+    @Composable
+    fun CardScroll() {
+        var verticalScrollState = rememberScrollState()
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(verticalScrollState)
+                .padding(10.dp)
+                .padding(bottom = 100.dp)
+        ) {
+            Row(horizontalArrangement = Arrangement.SpaceBetween) {
 
-            Box(modifier = Modifier.weight(0.5f)){
-                SomethingCard(title = "Listen to Music", icon = painterResource(R.drawable.ic_headphone) , BgColor = BlueViolet1)
+                Box(modifier = Modifier.weight(0.5f)) {
+                    SomethingCard(
+                        title = "Listen to Music",
+                        icon = painterResource(R.drawable.ic_headphone),
+                        BgColor = BlueViolet1
+                    )
+                }
+                Box(modifier = Modifier.weight(0.5f)) {
+                    SomethingCard(
+                        title = "Watch Great Videos",
+                        icon = painterResource(R.drawable.ic_videocam),
+                        BgColor = LightGreen1
+                    )
+                }
+
             }
-            Box(modifier = Modifier.weight(0.5f)){
-                SomethingCard(title = "Watch Great Videos", icon = painterResource(R.drawable.ic_videocam) , BgColor = LightGreen1)
+            Row(horizontalArrangement = Arrangement.SpaceBetween) {
+
+                Box(modifier = Modifier.weight(0.5f)) {
+                    SomethingCard(
+                        title = "Calming Music",
+                        icon = painterResource(R.drawable.ic_music),
+                        BgColor = Beige1
+                    )
+                }
+                Box(modifier = Modifier.weight(0.5f)) {
+                    SomethingCard(
+                        title = "Night Island",
+                        icon = painterResource(R.drawable.ic_moon),
+                        BgColor = OrangeYellow1
+                    )
+                }
+
             }
 
-        }
-        Row (horizontalArrangement = Arrangement.SpaceBetween){
-
-            Box(modifier = Modifier.weight(0.5f)){
-                SomethingCard(title = "Calming Music", icon = painterResource(R.drawable.ic_music) , BgColor = Beige1)
-            }
-            Box(modifier = Modifier.weight(0.5f)){
-                SomethingCard(title = "Night Island", icon = painterResource(R.drawable.ic_moon) , BgColor = OrangeYellow1)
-            }
 
         }
 
@@ -380,30 +393,25 @@ fun CardScroll(){
     }
 
 
-
-}
-
-
-
-@Composable
-fun BtmNavBar(
-    itemList:List<BtmNavData>,
-    modifier: Modifier=Modifier,
-    activeHighlight :Color = ButtonBlue,
-    activeText :Color = Color.White,
-    inactiveText:Color= AquaBlue,
-    inialSelectedItemIndex :Int = 0
-){
-    var selectedItemIndex by remember { mutableStateOf(inialSelectedItemIndex) }
-    Row (
-        horizontalArrangement = Arrangement.SpaceAround,
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(DeepBlue)
-            .padding(15.dp)
-    ){
-        itemList.forEachIndexed{index, btmNavData ->
+    @Composable
+    fun BtmNavBar(
+        itemList: List<BtmNavData>,
+        modifier: Modifier = Modifier,
+        activeHighlight: Color = ButtonBlue,
+        activeText: Color = Color.White,
+        inactiveText: Color = AquaBlue,
+        inialSelectedItemIndex: Int = 0
+    ) {
+        var selectedItemIndex by remember { mutableStateOf(inialSelectedItemIndex) }
+        Row(
+            horizontalArrangement = Arrangement.SpaceAround,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(DeepBlue)
+                .padding(15.dp)
+        ) {
+            itemList.forEachIndexed { index, btmNavData ->
                 BtmNavBarItem(
                     item = btmNavData,
                     isSelcted = index == selectedItemIndex,
@@ -414,62 +422,57 @@ fun BtmNavBar(
                 ) {
                     selectedItemIndex = index
                 }
+            }
+
+
         }
-
-
-
 
 
     }
 
-
-
-
-}
-
-@Composable
-fun BtmNavBarItem(
-        item:BtmNavData,
-        isSelcted : Boolean=false,
-        activeHighlight :Color = ButtonBlue,
-        activeText :Color = Color.White,
-        inactiveText:Color= AquaBlue,
-        onItemClick:()-> Unit
-)
-{
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = Modifier.clickable {
-            onItemClick()
-        }
-
+    @Composable
+    fun BtmNavBarItem(
+        item: BtmNavData,
+        isSelcted: Boolean = false,
+        activeHighlight: Color = ButtonBlue,
+        activeText: Color = Color.White,
+        inactiveText: Color = AquaBlue,
+        onItemClick: () -> Unit
     ) {
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .size(40.dp)
-                .clip(RoundedCornerShape(15.dp))
-                .background(if (isSelcted) activeHighlight else Color.Transparent)
-                .padding(5.dp)
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.clickable {
+                onItemClick()
+            }
 
-        ){
-            Icon(
-                painter = item.Icon,
-                contentDescription ="play icon",
-                tint = if (isSelcted) activeText else inactiveText,
+        ) {
+            Box(
+                contentAlignment = Alignment.Center,
                 modifier = Modifier
-                    .size(16.dp)
+                    .size(40.dp)
+                    .clip(RoundedCornerShape(15.dp))
+                    .background(if (isSelcted) activeHighlight else Color.Transparent)
+                    .padding(5.dp)
+
+            ) {
+                Icon(
+                    painter = item.Icon,
+                    contentDescription = "play icon",
+                    tint = if (isSelcted) activeText else inactiveText,
+                    modifier = Modifier
+                        .size(16.dp)
+                )
+            }
+            Text(
+                text = item.title,
+                color = if (isSelcted) activeText else inactiveText
             )
+
         }
-        Text(
-            text = item.title,
-            color = if (isSelcted)activeText else inactiveText
-        )
-        
+
+
     }
 
 
-
-}
 
