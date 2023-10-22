@@ -1,10 +1,12 @@
 package com.example.composefirst.ui.theme.meditation_app
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -42,8 +44,15 @@ fun HomeScreen(){
             BigText(text = "Featured")
             CardScroll()
 
-            BtmNavBar(btmList)
+
 
 
     }
+    Box(modifier = Modifier
+        .fillMaxSize(),
+        contentAlignment = Alignment.BottomCenter
+    ){
+        BtmNavBar(btmList)
+    }
+    
 }

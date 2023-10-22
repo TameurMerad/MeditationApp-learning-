@@ -450,9 +450,6 @@ fun BtmNavBarItem(
             modifier = Modifier
                 .size(40.dp)
                 .clip(RoundedCornerShape(15.dp))
-                .clickable {
-
-                }
                 .background(if (isSelcted) activeHighlight else Color.Transparent)
                 .padding(5.dp)
 
