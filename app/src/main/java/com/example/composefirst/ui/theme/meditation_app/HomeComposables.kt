@@ -256,7 +256,7 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
     {
 
 
-        Box(modifier = Modifier.height(200.dp))
+        Box(modifier = Modifier.height(170.dp))
         {
 
 
@@ -287,7 +287,7 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(15.dp),
+                        .padding(25.dp),
                     contentAlignment = Alignment.BottomStart
 
                 ) {
@@ -316,7 +316,7 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
                             }
 
                             .background(ButtonBlue)
-                            .padding(8.dp),
+                            .padding(10.dp),
                         contentAlignment = Alignment.Center,
                     ) {
                         Text(
