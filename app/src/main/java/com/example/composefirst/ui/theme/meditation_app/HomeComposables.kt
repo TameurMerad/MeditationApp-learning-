@@ -53,10 +53,12 @@ import androidx.core.view.WindowCompat
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.composefirst.R
+import com.example.composefirst.ui.theme.theme.AquaBlue
 import com.example.composefirst.ui.theme.theme.Beige1
 import com.example.composefirst.ui.theme.theme.BlueViolet1
 import com.example.composefirst.ui.theme.theme.ButtonBlue
 import com.example.composefirst.ui.theme.theme.DarkerButtonBlue
+import com.example.composefirst.ui.theme.theme.DeepBlue
 import com.example.composefirst.ui.theme.theme.LightGreen1
 import com.example.composefirst.ui.theme.theme.LightRed
 import com.example.composefirst.ui.theme.theme.OrangeYellow1
@@ -191,11 +193,12 @@ fun Thoughts (){
                     .padding(5.dp)
 
             ){
-                Icon(painter = painterResource(R.drawable.ic_play), contentDescription ="play icon",
+                Icon(
+                    painter = painterResource(R.drawable.ic_play),
+                    contentDescription ="play icon",
                     tint = Color.White,
                     modifier = Modifier
                         .size(16.dp)
-
                     )
             }
 
@@ -291,7 +294,9 @@ fun SomethingCard( title: String, icon:Painter, BgColor:Color) {
 
 
                     Box (contentAlignment = Alignment.BottomCenter,
-                        modifier = Modifier.weight(0.5f).padding(top = 10.dp)
+                        modifier = Modifier
+                            .weight(0.5f)
+                            .padding(top = 10.dp)
                         ){
                         Icon(painter = icon, contentDescription = "myIcon",
                             modifier = Modifier
@@ -378,4 +383,96 @@ fun CardScroll(){
 }
 
 
+
+@Composable
+fun BtmNavBar(
+    itemList:List<BtmNavData>,
+    modifier: Modifier=Modifier,
+    activeHighlight :Color = ButtonBlue,
+    activeText :Color = Color.White,
+    inactiveText:Color= AquaBlue,
+    inialSelectedItemIndex :Int = 0
+
+){
+    var selectedItemIndex by remember { mutableStateOf(inialSelectedItemIndex) }
+    Row (
+        horizontalArrangement = Arrangement.SpaceAround,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(DeepBlue)
+            .padding(15.dp)
+    ){
+        itemList.forEachIndexed{index, btmNavData ->
+                BtmNavBarItem(
+                    item = btmNavData,
+                    isSelcted = index == selectedItemIndex,
+                    activeHighlight = activeHighlight,
+                    activeText = activeText,
+                    inactiveText = inactiveText
+
+                ) {
+                    selectedItemIndex = index
+                }
+        }
+
+
+
+
+
+    }
+
+
+
+
+}
+
+@Composable
+fun BtmNavBarItem(
+        item:BtmNavData,
+        isSelcted : Boolean=false,
+        activeHighlight :Color = ButtonBlue,
+        activeText :Color = Color.White,
+        inactiveText:Color= AquaBlue,
+        onItemClick:()-> Unit
+)
+{
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier.clickable {
+            onItemClick()
+        }
+
+    ) {
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+                .size(40.dp)
+                .clip(RoundedCornerShape(15.dp))
+                .clickable {
+
+                }
+                .background(if (isSelcted) activeHighlight else Color.Transparent)
+                .padding(5.dp)
+
+        ){
+            Icon(
+                painter = item.Icon,
+                contentDescription ="play icon",
+                tint = if (isSelcted) activeText else inactiveText,
+                modifier = Modifier
+                    .size(16.dp)
+            )
+        }
+        Text(
+            text = item.title,
+            color = if (isSelcted)activeText else inactiveText
+        )
+        
+    }
+
+
+
+}
 
