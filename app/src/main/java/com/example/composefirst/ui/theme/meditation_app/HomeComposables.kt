@@ -353,6 +353,7 @@ fun CardScroll(){
             .fillMaxSize()
             .verticalScroll(verticalScrollState)
             .padding(10.dp)
+            .padding(bottom = 100.dp)
     ){
         Row (horizontalArrangement = Arrangement.SpaceBetween){
 
@@ -392,7 +393,6 @@ fun BtmNavBar(
     activeText :Color = Color.White,
     inactiveText:Color= AquaBlue,
     inialSelectedItemIndex :Int = 0
-
 ){
     var selectedItemIndex by remember { mutableStateOf(inialSelectedItemIndex) }
     Row (

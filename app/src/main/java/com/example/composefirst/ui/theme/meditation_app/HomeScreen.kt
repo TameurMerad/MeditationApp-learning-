@@ -36,17 +36,12 @@ fun HomeScreen(){
             .padding(top = 30.dp)
 
     ){
-
             Greetings(name = "Soufyan")
             ChipsSection(chipList)
             Thoughts()
             MySpacer(num = 0.01f)
             BigText(text = "Featured")
             CardScroll()
-
-
-
-
     }
     Box(modifier = Modifier
         .fillMaxSize(),
