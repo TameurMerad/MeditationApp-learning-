@@ -53,8 +53,8 @@ fun HomeScreen(){
                 Brush.verticalGradient(
                     colors = listOf(
                         Color.Transparent,
-                        Color.Black
-                    ), startY = 100f
+                        DeepBlue
+                    ), startY = 1500f
                 )
             )
     )
